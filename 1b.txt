@@ -1,0 +1,22 @@
+import numpy as np
+from sympy import Symbol
+import sympy as sym
+x=1,2,3,4,5,6,7,8,9,10;  
+y= 10600,11000,10400,9800,10800,11000,10500,10500,10000,8800;  
+xp=Symbol('x')
+arrayLen=len(x)
+l=[]
+for i in range(arrayLen):
+    arrayaux=np.arange(arrayLen)
+    arrayaux=list(arrayaux)
+    arrayaux.remove(i)
+    numLi=1
+    denli=1
+    for j in arrayaux:
+        numLi=numLi*(xp-x[j])
+        denli=denli*(x[i]-x[j])
+    Li=numLi/denli
+    l.append(sym.expand(Li))
+p=np.sum(y*np.array(l))
+print("Polinômio=")
+print(p)
